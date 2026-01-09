@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Casino</title>
+</head>
+
+<body>
+  <div id="app">
+    <div class="slot-machine">
+      <h1 class="casino-title">Lucky Spin</h1>
+      <p class="balance">
+        Balance: <span class="current-balance current-balance-js">1000</span> 🪙
+      </p>
+      <div class="reels-container ">
+        <div class="reel">
+          <div class="item js-item">❔</div>
+        </div>
+        <div class="reel">
+          <div class="item js-item">❔</div>
+        </div>
+        <div class="reel">
+          <div class="item js-item">❔</div>
+        </div>
+      </div>
+
+      <button class="start js-start">SPIN</button>
+    </div>
+  </div>
+
+  <div class="overlay js-overlay">
+    <div class="win-modal">
+      <div class="confetti-icon">🎉</div>
+      <h2>JACKPOT!</h2>
+      <p class="congrats">Поздравляем, ты выиграл!</p>
+      <div class="win-amount">
+        <span class="js-win-score">0</span> 🪙
+      </div>
+      <button class="close-modal js-close-modal">Забрать выигрыш</button>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js "> </script>​
+
+  <script type="module" src="./script.js"></script>
+</body>
+
+</html>
