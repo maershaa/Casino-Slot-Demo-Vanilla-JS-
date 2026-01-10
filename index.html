@@ -4,8 +4,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!--  фавикон 🎰 -->
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='90' font-size='90'>🎰</text></svg>">
+
   <link rel="stylesheet" href="style.css">
-  <title>Casino</title>
+  <title> Lucky Spin Casino</title>
 </head>
 
 <body>
@@ -13,25 +18,58 @@
     <div class="slot-machine">
       <h1 class="casino-title">Lucky Spin</h1>
       <p class="balance">
-        Balance: <span class="current-balance current-balance-js">1000</span> 🪙
+        Balance: <span class="current-balance js-current-balance">1000</span> 🪙
       </p>
-      <div class="reels-container ">
+      <div class="reels-container">
         <div class="reel">
-          <div class="item js-item">❔</div>
+          <div class="reel-track js-track">
+            <div class="item">🍒</div>
+            <div class="item">💎</div>
+            <div class="item">7️⃣</div>
+            <div class="item">🍒</div>
+            <div class="item">💎</div>
+            <div class="item">7️⃣</div>
+            <div class="item">🍒</div>
+            <div class="item">💎</div>
+            <div class="item">7️⃣</div>
+          </div>
         </div>
+
         <div class="reel">
-          <div class="item js-item">❔</div>
+          <div class="reel-track js-track">
+            <div class="item">🍒</div>
+            <div class="item">💎</div>
+            <div class="item">7️⃣</div>
+            <div class="item">🍒</div>
+            <div class="item">💎</div>
+            <div class="item">7️⃣</div>
+            <div class="item">🍒</div>
+            <div class="item">💎</div>
+            <div class="item">7️⃣</div>
+          </div>
         </div>
+
         <div class="reel">
-          <div class="item js-item">❔</div>
+          <div class="reel-track js-track">
+            <div class="item">🍒</div>
+            <div class="item">💎</div>
+            <div class="item">7️⃣</div>
+            <div class="item">🍒</div>
+            <div class="item">💎</div>
+            <div class="item">7️⃣</div>
+            <div class="item">🍒</div>
+            <div class="item">💎</div>
+            <div class="item">7️⃣</div>
+          </div>
         </div>
       </div>
+
 
       <button class="start js-start">SPIN</button>
     </div>
   </div>
 
-  <div class="overlay js-overlay">
+  <div class="win-overlay js-win-overlay">
     <div class="win-modal">
       <div class="confetti-icon">🎉</div>
       <h2>JACKPOT!</h2>
@@ -42,6 +80,17 @@
       <button class="close-modal js-close-modal">Забрать выигрыш</button>
     </div>
   </div>
+
+  <div class="noCash-overlay js-noCash-overlay">
+    <div class="noCash-modal">
+      <button class="close-circle js-close-noCash">&times;</button>
+      <h2>Oooops!</h2>
+      <p>Недостаточно средств на счету!</p>
+      <button class="recharge-btn js-recharge-btn">Пополнить счёт</button>
+    </div>
+  </div>
+
+
 
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js "> </script>​
 

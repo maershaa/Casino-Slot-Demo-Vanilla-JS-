@@ -45,14 +45,22 @@ body {
 .reel {
   width: 100px;
   height: 120px;
-  background: linear-gradient(to bottom, #333, #111, #333);
-  border-radius: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 3rem;
-  border: 1px solid #555;
+  overflow: hidden;
   position: relative;
+}
+
+.reel-track {
+  display: flex;
+  flex-direction: column;
+  transform: translateY(0);
+}
+
+.item {
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
 }
 
 .balance {
@@ -75,7 +83,7 @@ body {
   transition: all 0.3s ease;
 }
 
-.current-balance-js {
+.current-balance {
   color: #fff;
   text-shadow: 0 0 10px var(--neon-pink), 0 0 20px var(--neon-pink);
   font-size: 1.5rem;
@@ -114,7 +122,7 @@ body {
   opacity: 0.6;
 }
 
-/* Класс для анимации (будет добавляться через JS) */
+/* Анимация вращения барабана */
 .is-spinning {
   filter: blur(2px);
   animation: reel-spin 0.1s infinite linear;
@@ -130,7 +138,7 @@ body {
 }
 
 /* Контейнер-подложка */
-.overlay {
+.win-overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -148,7 +156,7 @@ body {
 }
 
 /* Активное состояние модалки */
-.overlay.is-open {
+.win-overlay.is-open {
   opacity: 1;
   visibility: visible;
 }
@@ -165,7 +173,7 @@ body {
   transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.overlay.is-open .win-modal {
+.win-overlay.is-open .win-modal {
   transform: scale(1);
 }
 
@@ -215,4 +223,91 @@ body {
   border-radius: 10px;
   cursor: pointer;
   margin-top: 20px;
+}
+
+/* Модалка недостаточно средств на счету */
+/* Подложка */
+.noCash-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6); /* затемнение фона */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.noCash-overlay.is-open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* Модалка */
+.noCash-modal {
+  position: relative;
+  background: #111; /* как у сайта */
+  padding: 30px 25px 25px 25px;
+  border-radius: 15px;
+  width: 320px;
+  max-width: 90%;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+  color: #fff;
+}
+
+/* Заголовок */
+.noCash-modal h2 {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+  color: var(--neon-pink);
+}
+
+.noCash-modal p {
+  font-size: 1rem;
+  margin-bottom: 20px;
+  line-height: 1.4;
+}
+
+/* Кнопка Пополнить */
+.recharge-btn {
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 10px;
+  border: none;
+  background: var(--gold);
+  color: #000000;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.recharge-btn:hover {
+  background: var(--gold);
+}
+
+.close-circle {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: none;
+  background: #333;
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  line-height: 30px;
+  text-align: center;
+  transition: background 0.2s ease;
+}
+
+.close-circle:hover {
+  background: #555;
 }
