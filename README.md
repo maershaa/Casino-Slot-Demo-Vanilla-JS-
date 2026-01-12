@@ -167,5 +167,6 @@ CSS, отступы, шрифты, форматирование.
 
 **Пример:**  
 `chore: update project configuration`
+`chore: add comments and minor code cleanup`
 
 ---

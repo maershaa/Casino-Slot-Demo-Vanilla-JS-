@@ -106,9 +106,7 @@ body {
   font-size: 1.5rem;
 }
 
-/* ============================= */
-/*            КНОПКИ             */
-/* ============================= */
+/* Кнопка SPIN (старта) */
 .start {
   background: var(--neon-pink);
   color: white;
@@ -141,26 +139,7 @@ body {
   opacity: 0.6;
 }
 
-/* ============================= */
-/*       АНИМАЦИЯ БАРАБАНА       */
-/* ============================= */
-.is-spinning {
-  filter: blur(2px);
-  animation: reel-spin 0.1s infinite linear;
-}
-
-@keyframes reel-spin {
-  0% {
-    transform: translateY(-10px);
-  }
-  100% {
-    transform: translateY(10px);
-  }
-}
-
-/* ============================= */
-/*         МОДАЛКИ WIN           */
-/* ============================= */
+/* Модалка выиграша */
 .win-overlay {
   position: fixed;
   top: 0;
@@ -245,9 +224,7 @@ body {
   margin-top: 20px;
 }
 
-/* ============================= */
-/*       МОДАЛКА НЕДОСТАТОК      */
-/* ============================= */
+/* Модалка недостаток средств */
 .noCash-overlay {
   position: fixed;
   top: 0;
@@ -293,6 +270,7 @@ body {
   line-height: 1.4;
 }
 
+/* Кнопка пополнения счета в модалке о нехватке средтв на счету */
 .recharge-btn {
   padding: 10px 20px;
   font-size: 1rem;

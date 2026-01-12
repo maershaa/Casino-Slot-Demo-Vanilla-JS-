@@ -3,11 +3,12 @@ const reels = document.querySelectorAll('.js-track'); //  барабаны
 
 const currentBalanceEl = document.querySelector('.js-current-balance');
 
-// Оверлей с модальным окном выигрыша
+// Модалка с окном выигрыша
 const overlay = document.querySelector('.js-win-overlay');
 const closeBtn = document.querySelector('.js-close-modal');
 const winScoreDisplay = document.querySelector('.js-win-score');
 
+// Модалка о недостатке средств на счету
 const noCashModal = document.querySelector('.js-noCash-overlay');
 const rechargeBtn = document.querySelector('.js-recharge-btn');
 const noCashСloseBtn = document.querySelector('.js-close-noCash');
@@ -33,8 +34,7 @@ startBtn.addEventListener('click', onStartBtnClick);
 
 function onStartBtnClick() {
   // Если барабаны уже крутятся — игнорируем клик
-  console.log('🚀 ~ onStartBtnClick ~ isSpinning:', isSpinning);
-  if (isSpinning) return; //!тут оно true?
+  if (isSpinning) return;
 
   // Проверка на достаточность средств
   if (balance < SPIN_COST) {
@@ -87,16 +87,16 @@ function spinReel(trackEl, finalIndex, onFinish) {
   // Сбрасываем transform и transition перед стартом
   trackEl.style.transition = 'none';
   trackEl.style.transform = 'translateY(0)';
-  trackEl.offsetHeight; // принудительный reflow
+  trackEl.offsetHeight; // !принудительный reflow. используется не для получения высоты с учётом padding и border, а для принудительного применения предыдущих изменений стилей. Это нужно, потому что сразу после этого задаётся новая анимация, и без принудительной перерисовки браузер может объединить все изменения в одно и анимация не запустится.
 
-  // Финальная позиция случайного символа
+  // Финальная позиция случайного символа. finalIndex — индекс символа, на котором должен остановиться барабан, а ITEM_HEIGHT — высота одного элемента барабана
   const finalOffset = finalIndex * ITEM_HEIGHT;
 
   // Плавная анимация до финального символа
   trackEl.style.transition = `transform ${SPIN_DURATION}ms ease-out`;
   trackEl.style.transform = `translateY(-${finalOffset}px)`;
 
-  setTimeout(onFinish, SPIN_DURATION); //!не понимаю
+  setTimeout(onFinish, SPIN_DURATION); //Через столько же миллисекунд, сколько длится анимация, вызови onFinish, кот запускает барабаны по очереди, каждый останавливается в нужной позиции, после остановки последнего — проверяется выигрыш и разблокируется кнопка спин(старт)
 }
 
 function checkWin(resultIndexes) {
@@ -149,6 +149,7 @@ noCashСloseBtn.addEventListener('click', () => {
   noCashModal.classList.remove('is-open');
 });
 
+// Пополнение счета при нажатии кнопки-пополняшки
 rechargeBtn.addEventListener('click', () => {
   updateBalance(500);
   noCashModal.classList.remove('is-open');
